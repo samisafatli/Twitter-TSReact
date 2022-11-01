@@ -53,8 +53,8 @@ const post_1:IPost = {
     username: user_1.username,
     content: "Lorem Ipsum 1",
     reactions: {
-        likes: 2,
-        dislikes: 1,
+        likes: 0,
+        dislikes: 0,
     }
 }
 
@@ -62,8 +62,8 @@ const post_2:IPost = {
     username: user_2.username,
     content: "Lorem Ipsum 2",
     reactions: {
-        likes: 2,
-        dislikes: 1,
+        likes: 0,
+        dislikes: 0,
     }
 }
 
@@ -71,8 +71,8 @@ const post_3:IPost = {
     username: user_3.username,
     content: "Lorem Ipsum 3",
     reactions: {
-        likes: 2,
-        dislikes: 1,
+        likes: 0,
+        dislikes: 0,
     }
 }
 
@@ -80,8 +80,8 @@ const post_4:IPost = {
     username: user_4.username,
     content: "Lorem Ipsum 4",
     reactions: {
-        likes: 5,
-        dislikes: 6,
+        likes: 0,
+        dislikes: 0,
     }
 }
 

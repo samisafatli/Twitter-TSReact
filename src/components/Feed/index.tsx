@@ -15,7 +15,7 @@ const Feed = () => {
     content: content,
     reactions: {
       likes: 0,
-      dislikes: 0
+      dislikes: 0,
     }
   }
 
@@ -25,7 +25,7 @@ const Feed = () => {
       setContent("")
     }
   }
- 
+  
   return (
     <Container>
       <BoxDiv>
@@ -42,7 +42,6 @@ const Feed = () => {
          />
         <Send onClick={generatePoster} size={20}/>
       </BoxDiv>
-
       {feed.map(newPost => (
         <Post 
           username={newPost.username}

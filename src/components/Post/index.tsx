@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Reactions } from './styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -15,11 +15,45 @@ type PostProps = {
     }
 }
 
-const interact = () => {
-    console.log("interacting with post")
-}
-
 const Post = ({username, content, reactions}: PostProps) => {
+
+    console.log(reactions)
+
+    const [like, setLike] = useState<number>(reactions.likes);
+    const [dislike, setDislike] = useState<number>(reactions.dislikes);
+    const [likeActive, setLikeActive] = useState<boolean>(false);
+    const [dislikeActive, setDislikeActive] = useState<boolean>(false);
+
+    const addLike = () => {
+        if(likeActive){
+            setLikeActive(false)
+            setLike(like-1)
+        } else {
+            setLikeActive(true)
+            setLike(like+1)
+            if(dislikeActive){
+                setDislikeActive(false)
+                setLike(like+1)
+                setDislike(dislike-1)
+            }
+        }
+    }
+
+    const addDislike = () => {
+        if(dislikeActive){
+            setDislikeActive(false)
+            setDislike(dislike-1)
+        } else {
+            setDislikeActive(true)
+            setDislike(dislike+1)
+            if(likeActive){
+                setLikeActive(false)
+                setDislike(dislike+1)
+                setLike(like-1)
+            }
+        }
+    }
+    
     return (
         <Container>
             <Card sx={{ wordWrap: "break-word", minWidth: 275 }}>
@@ -32,10 +66,10 @@ const Post = ({username, content, reactions}: PostProps) => {
                     </Typography>
                     <Reactions>
                         <Typography variant="body2">
-                        <Heart onClick={interact} size={20}/> {reactions.likes}
+                            <Heart onClick={addLike} size={20}/> {like}
                         </Typography>
                         <Typography variant="body2">
-                        <HeartDislike onClick={interact} size={20}/>{reactions.dislikes}
+                            <HeartDislike onClick={addDislike} size={20}/> {dislike}
                         </Typography>
                     </Reactions>
                 </CardContent>
