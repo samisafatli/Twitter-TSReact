@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Reactions } from './styles';
+import { Container, Reactions, Reaction} from './styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -65,12 +65,12 @@ const Post = ({username, content, reactions}: PostProps) => {
                     {content}
                     </Typography>
                     <Reactions>
-                        <Typography variant="body2">
-                            <Heart onClick={addLike} size={20}/> {like}
-                        </Typography>
-                        <Typography variant="body2">
-                            <HeartDislike onClick={addDislike} size={20}/> {dislike}
-                        </Typography>
+                        <Reaction>
+                            <Heart className='bla' onClick={addLike} size={20}/> {like}
+                        </Reaction>
+                        <Reaction>
+                        <HeartDislike onClick={addDislike} size={20}/> {dislike}
+                        </Reaction>
                     </Reactions>
                 </CardContent>
             </Card>
