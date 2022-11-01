@@ -1,43 +1,43 @@
 interface IUser {
     username: string,
     joinDate: string,
-    followers: number,
-    following: number,
-}
-
-export const admUser: IUser = {
-    username: "Dean Winchester",
-    joinDate: "January 24, 1979",
-    followers: 1,
-    following: 1,
+    followers: Array<IUser>,
+    following: Array<IUser>,
 }
 
 const user_1:IUser = {
     username: "Michelangelo",
     joinDate: "December 4, 1995",
-    followers: 1000,
-    following: 1,
+    followers: [],
+    following: [],
 }
 
 const user_2:IUser = {
     username: "Donatello",
     joinDate: "May 29, 2013",
-    followers: 2000,
-    following: 2,
+    followers: [user_1],
+    following: [user_1],
 }
 
 const user_3:IUser = {
     username: "Raphael",
     joinDate: "May 27, 2009",
-    followers: 3000,
-    following: 3,
+    followers: [user_1, user_2],
+    following: [user_1, user_2],
 }
 
 const user_4:IUser = {
     username: "Leonardo",
     joinDate: "November 03, 1998",
-    followers: 4000,
-    following: 5,
+    followers: [user_1, user_2, user_3],
+    following: [user_1, user_2, user_3],
+}
+
+export const admUser: IUser = {
+    username: "Dean Winchester",
+    joinDate: "January 24, 1979",
+    followers: [user_4],
+    following: [user_4],
 }
 
 export interface IPost {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Container, BoxDiv} from './styles';
+import { Container, BoxDiv, FeedDiv, Toggle} from './styles';
 import Post from '../Post';
-import TextField from '@mui/material/TextField';
+import {TextField, Switch, Typography} from '@mui/material';
 import {Send} from '@styled-icons/fluentui-system-regular/Send'
 import {FeedList, IPost, admUser} from '../../../mockedData'
 
@@ -25,9 +25,13 @@ const Feed = () => {
       setContent("")
     }
   }
-  
+
   return (
     <Container>
+      <Toggle>
+        <Typography>All / Following</Typography>
+        <Switch></Switch>
+      </Toggle>
       <BoxDiv>
         <TextField
           fullWidth
@@ -42,6 +46,7 @@ const Feed = () => {
          />
         <Send onClick={generatePoster} size={20}/>
       </BoxDiv>
+      <FeedDiv>
       {feed.map(newPost => (
         <Post 
           username={newPost.username}
@@ -49,6 +54,7 @@ const Feed = () => {
           reactions={newPost.reactions}
         />
       ))}
+      </FeedDiv>
     </Container>
   );
 }
