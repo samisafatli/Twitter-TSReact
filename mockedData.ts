@@ -49,7 +49,7 @@ export interface IPost {
     }
 }
 
-const post_1:IPost = {
+export const post_1:IPost = {
     username: user_1.username,
     content: "Lorem Ipsum 1",
     reactions: {
@@ -58,7 +58,7 @@ const post_1:IPost = {
     }
 }
 
-const post_2:IPost = {
+export const post_2:IPost = {
     username: user_2.username,
     content: "Lorem Ipsum 2",
     reactions: {
@@ -67,7 +67,7 @@ const post_2:IPost = {
     }
 }
 
-const post_3:IPost = {
+export const post_3:IPost = {
     username: user_3.username,
     content: "Lorem Ipsum 3",
     reactions: {
@@ -76,7 +76,7 @@ const post_3:IPost = {
     }
 }
 
-const post_4:IPost = {
+export const post_4:IPost = {
     username: user_4.username,
     content: "Lorem Ipsum 4",
     reactions: {
