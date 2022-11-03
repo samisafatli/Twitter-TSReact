@@ -1,22 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {FeedList } from '../../mockedData'
-
-export interface IPost {
-    id: number,
-    username: string,
-    content: string
-    reactions: {
-        likes: number,
-        dislikes: number,
-    }
-}
-
-export interface IUser {
-    username: string,
-    joinDate: string,
-    followers: Array<IUser>,
-    following: Array<IUser>,
-}
+import { IPost } from '../models'
 
 const INITIAL_STATE: IPost[] = FeedList
 
@@ -28,17 +12,17 @@ const slicePost = createSlice({
             return [{ ...payload }, ...state]
         },
         addLike(state, { payload }:PayloadAction<{id:number}>){
-            state.forEach((post)=>{
-                if(post.id === payload.id){
-                    post.reactions.likes = +!post.reactions.likes
+            state.forEach(({id, reactions})=>{
+                if(id === payload.id){
+                    reactions.likes = +!reactions.likes
                 }
             })
             return state
         },
         addDislike(state, { payload }:PayloadAction<{id:number}>){
-            state.forEach((post)=>{
-                if(post.id === payload.id){
-                    post.reactions.dislikes = +!post.reactions.dislikes
+            state.forEach(({id, reactions})=>{
+                if(id === payload.id){
+                    reactions.dislikes = +!reactions.dislikes
                 }
             })
             return state
@@ -47,6 +31,7 @@ const slicePost = createSlice({
 })
 
 export default slicePost.reducer
+
 export const { addPosts, addLike, addDislike } = slicePost.actions
 
 export const usePosts = (state: any) => state.posts as IPost[]

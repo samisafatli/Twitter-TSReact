@@ -7,18 +7,9 @@ import { Heart} from '@styled-icons/foundation/Heart';
 import { HeartDislike } from '@styled-icons/ionicons-solid/HeartDislike';
 import { useDispatch, useSelector } from 'react-redux';
 import { addLike, addDislike, usePost } from '../../redux/slicePosts';
+import { IPost } from '../../models'
 
-type PostProps = {
-    id: number,
-    username: string,
-    content: string,
-    reactions: {
-        likes: number,
-        dislikes: number,
-    }
-}
-
-const Post = ({username, content, id}: PostProps) => {
+const Post = ({username, content, id}: IPost) => {
     const [post] = useSelector(usePost(id))
 
     const dispatch = useDispatch()
