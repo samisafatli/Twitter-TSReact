@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     margin-top: 40px;
+    margin-right: 40px;
 `
 export const Toggle = styled.div`
     display: flex;
@@ -10,12 +11,12 @@ export const Toggle = styled.div`
 `
 
 export const BoxDiv = styled.div`
-    border: 1px solid var(--secondary);
     width: 600px;
     height: 160px;
-    background: white;
+    background: var(--secondary)
 `
 
 export const FeedDiv = styled.div`
     margin-top: 40px;
 `
+

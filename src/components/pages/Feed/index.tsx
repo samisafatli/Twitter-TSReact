@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Container, BoxDiv, FeedDiv, Toggle} from './styles';
-import Post from '../Post';
+import Post from '../../Post';
 import {TextField, Switch, Typography} from '@mui/material';
 import {Send} from '@styled-icons/fluentui-system-regular/Send'
-import {admUser} from '../../../mockedData'
+import {admUser} from '../../../../mockedData'
 import { useDispatch, useSelector } from 'react-redux';
-import { addPosts, usePosts } from '../../redux/slicePosts';
+import { addPosts, usePosts } from '../../../redux/slicePosts';
 
 const Feed = () => {
 
@@ -26,11 +26,7 @@ const Feed = () => {
 
   return (
     <Container>
-      <Toggle>
-        <Typography>All / Following</Typography>
-        <Switch></Switch>
-      </Toggle>
-      <BoxDiv>
+      <BoxDiv style={{ padding: "5px", borderRadius: "15px"}}>
         <TextField
           fullWidth
           multiline
@@ -42,7 +38,10 @@ const Feed = () => {
           label="What about another Posterr?!"
           variant="standard"
          />
-        <Send onClick={() =>dispatch(addPosts(newPost))} size={20}/>
+        <Send onClick={() =>{
+          dispatch(addPosts(newPost))
+          setContent("")
+          }} size={20}/>
       </BoxDiv>
       <FeedDiv>
       {feed.map(newPost => (

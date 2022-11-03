@@ -16,7 +16,7 @@ const Post = ({username, content, id}: IPost) => {
 
     return (
         <Container>
-            <Card sx={{ wordWrap: "break-word", minWidth: 275 }}>
+            <Card sx={{ wordWrap: "break-word", minWidth: 275, borderRadius: "15px" }}>
                 <CardContent>
                     <Typography sx={{fontSize: 14 }} color="text.secondary" gutterBottom>
                     {username}
