@@ -3,14 +3,17 @@ import { Container, BoxDiv, FeedDiv, Toggle} from './styles';
 import Post from '../Post';
 import {TextField, Switch, Typography} from '@mui/material';
 import {Send} from '@styled-icons/fluentui-system-regular/Send'
-import {FeedList, IPost, admUser} from '../../../mockedData'
+import {admUser} from '../../../mockedData'
+import { useDispatch, useSelector } from 'react-redux';
+import { addPosts, usePosts } from '../../redux/slicePosts';
 
 const Feed = () => {
 
+  const feed = useSelector(usePosts)
   const [content, setContent] = useState<string>("");
-  const [feed, setFeed] = useState<IPost[]>(FeedList);
-
+  
   const newPost = {
+    id: Math.floor(Math.random() * 100),
     username: admUser.username,
     content: content,
     reactions: {
@@ -19,12 +22,7 @@ const Feed = () => {
     }
   }
 
-  const generatePoster =  () => {
-    if(content !== "") {
-      setFeed([newPost, ...feed])
-      setContent("")
-    }
-  }
+  const dispatch = useDispatch()
 
   return (
     <Container>
@@ -44,11 +42,12 @@ const Feed = () => {
           label="What about another Posterr?!"
           variant="standard"
          />
-        <Send onClick={generatePoster} size={20}/>
+        <Send onClick={() =>dispatch(addPosts(newPost))} size={20}/>
       </BoxDiv>
       <FeedDiv>
       {feed.map(newPost => (
-        <Post 
+        <Post
+          id={newPost.id}
           username={newPost.username}
           content={newPost.content}
           reactions={newPost.reactions}

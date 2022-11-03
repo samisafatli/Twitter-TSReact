@@ -5,8 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Heart} from '@styled-icons/foundation/Heart';
 import { HeartDislike } from '@styled-icons/ionicons-solid/HeartDislike';
+import { useDispatch, useSelector } from 'react-redux';
+import { addLike, addDislike, usePost } from '../../redux/slicePosts';
 
 type PostProps = {
+    id: number,
     username: string,
     content: string,
     reactions: {
@@ -15,45 +18,11 @@ type PostProps = {
     }
 }
 
-const Post = ({username, content, reactions}: PostProps) => {
+const Post = ({username, content, id}: PostProps) => {
+    const [post] = useSelector(usePost(id))
 
-    console.log(reactions)
+    const dispatch = useDispatch()
 
-    const [like, setLike] = useState<number>(reactions.likes);
-    const [dislike, setDislike] = useState<number>(reactions.dislikes);
-    const [likeActive, setLikeActive] = useState<boolean>(false);
-    const [dislikeActive, setDislikeActive] = useState<boolean>(false);
-
-    const addLike = () => {
-        if(likeActive){
-            setLikeActive(false)
-            setLike(like-1)
-        } else {
-            setLikeActive(true)
-            setLike(like+1)
-            if(dislikeActive){
-                setDislikeActive(false)
-                setLike(like+1)
-                setDislike(dislike-1)
-            }
-        }
-    }
-
-    const addDislike = () => {
-        if(dislikeActive){
-            setDislikeActive(false)
-            setDislike(dislike-1)
-        } else {
-            setDislikeActive(true)
-            setDislike(dislike+1)
-            if(likeActive){
-                setLikeActive(false)
-                setDislike(dislike+1)
-                setLike(like-1)
-            }
-        }
-    }
-    
     return (
         <Container>
             <Card sx={{ wordWrap: "break-word", minWidth: 275 }}>
@@ -65,11 +34,11 @@ const Post = ({username, content, reactions}: PostProps) => {
                     {content}
                     </Typography>
                     <Reactions>
-                        <Reaction>
-                            <Heart className='bla' onClick={addLike} size={20}/> {like}
+                        <Reaction onClick={() =>dispatch(addLike({id}))}>
+                            <Heart size={20}/> {post.reactions.likes}
                         </Reaction>
-                        <Reaction>
-                        <HeartDislike onClick={addDislike} size={20}/> {dislike}
+                        <Reaction onClick={() => dispatch(addDislike({id}))}>
+                        <HeartDislike size={20}/> {post.reactions.dislikes}
                         </Reaction>
                     </Reactions>
                 </CardContent>
