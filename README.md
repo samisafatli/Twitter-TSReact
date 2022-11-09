@@ -8,7 +8,6 @@
 
 - `yarn dev`
 
-## Planning
 ### Questions about the application
 
 - Should the user see his posts and quotes whenever he filters the feed to see the following?
