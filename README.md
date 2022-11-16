@@ -29,7 +29,6 @@ The user should be able to change his username, but not other data like joinedDa
     - Structure error handling
     - Define the status code correct for each case of response
     - Add unit tests and e2e tests to cover all components
-    - Add a linter
     - Add documentation as the project grow.
 
 - Add new functions:

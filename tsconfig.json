@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "mockedData.ts"],
+  "include": ["src", "mockedData.ts", ".eslintrc.cjs" ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
