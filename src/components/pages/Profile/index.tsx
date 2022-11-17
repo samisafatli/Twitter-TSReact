@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Title } from './styles';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, Typography } from '@mui/material';

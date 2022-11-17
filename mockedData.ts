@@ -76,6 +76,6 @@ export const admUser: IUser = {
 }
 
 
-export const Users:Array<IUser> = [ user_1, user_2, user_3, user_4 ]
+export const Users:IUser[] = [ user_1, user_2, user_3, user_4 ]
 
-export const FeedList:Array<IPost> = [ post_1, post_2, post_3, post_4]
+export const FeedList:IPost[] = [ post_1, post_2, post_3, post_4]

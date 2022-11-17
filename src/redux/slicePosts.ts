@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {FeedList } from '../../mockedData'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { FeedList } from '../../mockedData'
 import { IPost } from '../models'
 
 const INITIAL_STATE: IPost[] = FeedList

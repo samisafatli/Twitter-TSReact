@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Reactions, Reaction} from './styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,6 +8,7 @@ import { HeartDislike } from '@styled-icons/ionicons-solid/HeartDislike';
 import { useDispatch, useSelector } from 'react-redux';
 import { addLike, addDislike, usePost } from '../../redux/slicePosts';
 import { IPost } from '../../models'
+import { Link } from 'react-router-dom';
 
 const Post = ({username, content, id}: IPost) => {
     const [post] = useSelector(usePost(id))
@@ -18,11 +19,13 @@ const Post = ({username, content, id}: IPost) => {
         <Container>
             <Card sx={{ wordWrap: "break-word", minWidth: 275, borderRadius: "15px" }}>
                 <CardContent>
-                    <Typography sx={{fontSize: 14 }} color="text.secondary" gutterBottom>
-                    {username}
-                    </Typography>
+                    <Link to='/profile' style={{  textDecoration: "none", color: "black"}}>
+                        <Typography sx={{fontSize: 14 }} color="text.secondary" gutterBottom>
+                            {username}
+                        </Typography>
+                    </Link>    
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {content}
+                        {content}
                     </Typography>
                     <Reactions>
                         <Reaction onClick={() =>dispatch(addLike({id}))}>
