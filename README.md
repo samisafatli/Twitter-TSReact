@@ -1,5 +1,7 @@
 # Sami Safatli
 
+This project copies the main function of Twitter. So the use can create and post a new Tweet.
+
 ## Setup the project
 
 - Yarn  
